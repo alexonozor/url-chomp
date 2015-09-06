@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Shorters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Long url</th>
+      <th>Short url</th>
+      <th>Click</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shorters.each do |shorter| %>
+      <tr>
+        <td><%= shorter.long_url %></td>
+        <td><%= shorter.short_url %></td>
+        <td><%= shorter.click %></td>
+        <td><%= shorter.user_id %></td>
+        <td><%= link_to 'Show', shorter %></td>
+        <td><%= link_to 'Edit', edit_shorter_path(shorter) %></td>
+        <td><%= link_to 'Destroy', shorter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shorter', new_shorter_path %>

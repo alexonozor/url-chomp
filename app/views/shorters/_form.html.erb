@@ -1,0 +1,21 @@
+<%= form_for(@shorter) do |f| %>
+  <% if @shorter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shorter.errors.count, "error") %> prohibited this shorter from being saved:</h2>
+
+      <ul>
+      <% @shorter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :long_url, "Past your long url" %><br>
+    <%= f.text_field :long_url %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
