@@ -1,5 +1,5 @@
 class ShortersController < ApplicationController
-  before_action :set_shorter, only: [:show, :edit, :update, :destroy]
+  before_action :set_shorter, only: [:show, :edit, :update, :destroy, :details]
 
   # GET /shorters
   # GET /shorters.json
@@ -11,6 +11,7 @@ class ShortersController < ApplicationController
   # GET /shorters/1.json
   def show
     if @shorter
+      @shorter.click_counter if current_user
       redirect_to @shorter.long_url
     else
       flash[:errors] = "Cound not connect with any site please chech the url you are try to shorten"
@@ -31,10 +32,10 @@ class ShortersController < ApplicationController
   # POST /shorters.json
   def create
     @shorter = Shorter.new(shorter_params)
-
+    @shorter.user_id = current_user.id if current_user
     respond_to do |format|
       if @shorter.save
-        format.html { redirect_to root_url, notice: 'Shorter was successfully created.' }
+        format.html { redirect_to root_url, notice: request.domain + @shorter.short_url }
         format.json { render :show, status: :created, location: @shorter }
       else
         format.html { render :new }
@@ -60,11 +61,16 @@ class ShortersController < ApplicationController
   # DELETE /shorters/1
   # DELETE /shorters/1.json
   def destroy
+    @shorter = Shorter.find(params[:id])
     @shorter.destroy
     respond_to do |format|
-      format.html { redirect_to shorters_url, notice: 'Shorter was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Shorter was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def details
+      @shorter = Shorter.find(params[:id])
   end
 
   private
@@ -75,6 +81,6 @@ class ShortersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shorter_params
-      params.require(:shorter).permit(:long_url, :short_url, :click, :user_id)
+      params.require(:shorter).permit(:long_url, :short_url, :clicks, :user_id)
     end
 end

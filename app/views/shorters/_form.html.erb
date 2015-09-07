@@ -11,11 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :long_url, "Past your long url" %><br>
-    <%= f.text_field :long_url %>
+  <div class="input-group">
+    <%= f.text_field :long_url, class:'form-control', placeholder: 'http://long_url.com' %>
+    <div class="input-group-btn">
+      <%= f.submit "Chomp URL", class: 'btn btn-primary' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>
