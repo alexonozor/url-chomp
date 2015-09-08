@@ -29,7 +29,7 @@ gem 'browser'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-group :development do
+group :production do
   gem 'pg'
 end
 
