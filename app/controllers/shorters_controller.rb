@@ -1,6 +1,6 @@
 class ShortersController < ApplicationController
-  before_action :set_shorter, only: [:show, :edit, :update, :destroy, :details]
-
+  before_action :set_shorter, only: [:show, :edit, :update]
+  before_action :find_by_id, only: [:details, :destroy, :edit]
   # GET /shorters
   # GET /shorters.json
   def index
@@ -21,6 +21,7 @@ class ShortersController < ApplicationController
 
   # GET /shorters/new
   def new
+    puts request.user_agent
     @shorter = Shorter.new
   end
 
@@ -70,7 +71,6 @@ class ShortersController < ApplicationController
   end
 
   def details
-      @shorter = Shorter.find(params[:id])
   end
 
   private
@@ -78,6 +78,10 @@ class ShortersController < ApplicationController
     def set_shorter
       @shorter = Shorter.find_by_short_url(params[:short_url])
     end
+
+  def find_by_id
+    @shorter = Shorter.find(params[:id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shorter_params

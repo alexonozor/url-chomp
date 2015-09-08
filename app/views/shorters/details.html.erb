@@ -1,1 +1,18 @@
-wetrwertwertwert
+<script>
+$(function () {
+  new Highcharts.Chart({
+    chart: { renderTo: 'orders_chart' },
+    title: { text: 'Click Count' },
+    xAxis: { type: 'datetime' },
+    yAxis: {
+      title: { text: 'clicks'}
+    },
+    series: [{
+      pointInterval: <%= 1.day * 1000 %>,
+      data: [<%= @shorter.clicks  %>]
+    }]
+  });
+});
+</script>
+
+<div id="orders_chart"></div>

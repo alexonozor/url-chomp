@@ -1,4 +1,5 @@
 class Shorter < ActiveRecord::Base
+  geocoded_by :ip_address
   before_validation :generate_short_url
   validates :long_url, presence: :true
   validates :short_url, presence: :true
@@ -8,9 +9,13 @@ class Shorter < ActiveRecord::Base
   default_scope {order('created_at desc')}
 
 
+
+
   def click_counter
     self.increment!(:clicks)
   end
+
+
 
 
   def generate_short_url
