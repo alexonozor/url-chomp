@@ -1,6 +1,8 @@
 class ShortersController < ApplicationController
   before_action :set_shorter, only: [:show, :edit, :update]
   before_action :find_by_id, only: [:details, :destroy, :edit]
+  require 'browser'
+
   # GET /shorters
   # GET /shorters.json
   def index
@@ -13,6 +15,7 @@ class ShortersController < ApplicationController
   def show
     if @shorter
       @shorter.click_counter if current_user
+      @shorter.analytics.create(country: request.location.data['country_name'], refferer: request.referrer, device: convert_to_device)
       redirect_to @shorter.long_url
     else
       flash[:errors] = "Cound not connect with any site please chech the url you are try to shorten"
@@ -75,6 +78,12 @@ class ShortersController < ApplicationController
   def details
   end
 
+  def convert_to_device
+    browser = ::Detector.new
+    alex = browser.browser_detection(request.env['HTTP_USER_AGENT'])
+    return alex
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shorter
@@ -89,4 +98,7 @@ class ShortersController < ApplicationController
     def shorter_params
       params.require(:shorter).permit(:long_url, :short_url, :clicks, :user_id)
     end
+
+
+
 end

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906154232) do
+ActiveRecord::Schema.define(version: 20150910133258) do
+
+  create_table "analytics", force: :cascade do |t|
+    t.string   "country"
+    t.string   "device"
+    t.string   "refferer"
+    t.integer  "shorter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "shorters", force: :cascade do |t|
     t.string   "long_url"

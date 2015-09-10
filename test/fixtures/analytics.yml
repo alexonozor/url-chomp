@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  country: MyString
+  device: MyString
+  refferer: MyString
+  shorter_id: 1
+
+two:
+  country: MyString
+  device: MyString
+  refferer: MyString
+  shorter_id: 1
