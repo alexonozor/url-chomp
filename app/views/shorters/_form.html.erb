@@ -1,15 +1,14 @@
-<%= form_for(@shorter) do |f| %>
-  <% if @shorter.errors.any? %>
-      <% @shorter.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-  <% end %>
+<%= form_for(@shorter, remote: true) do |f| %>
+    <% if @shorter.errors.any? %>
+        <% @shorter.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+    <% end %>
 
-  <div class="input-group">
-    <%= f.text_field :long_url, class:'form-control', placeholder: 'http://long_url.com' %>
-    <div class="input-group-btn">
-      <%= f.submit "Chomp URL", class: 'btn btn-primary' %>
+    <div class="input-group">
+      <%= f.text_field :long_url, class:'form-control', placeholder: 'http://long_url.com' %>
+      <div class="input-group-btn">
+        <%= f.submit "Chomp URL", class: 'btn btn-primary' %>
+      </div>
     </div>
-  </div>
-
 <% end %>

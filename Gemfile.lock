@@ -40,7 +40,6 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    browser (1.0.1)
     builder (3.2.2)
     byebug (6.0.2)
     coderay (1.1.0)
@@ -61,7 +60,6 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.6.0)
-    geocoder (1.2.9)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -119,6 +117,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
+      json (~> 1.4)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     sass (3.4.18)
@@ -162,11 +161,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  browser
   byebug
   coffee-rails (~> 4.1.0)
   devise
-  geocoder
   jbuilder (~> 2.0)
   jquery-rails
   pg

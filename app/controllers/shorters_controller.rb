@@ -4,6 +4,7 @@ class ShortersController < ApplicationController
   # GET /shorters
   # GET /shorters.json
   def index
+    @shorter = Shorter.new
     @shorters = Shorter.all
   end
 
@@ -21,7 +22,6 @@ class ShortersController < ApplicationController
 
   # GET /shorters/new
   def new
-    puts request.user_agent
     @shorter = Shorter.new
   end
 
@@ -38,9 +38,11 @@ class ShortersController < ApplicationController
       if @shorter.save
         format.html { redirect_to root_url, notice: request.domain + @shorter.short_url }
         format.json { render :show, status: :created, location: @shorter }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @shorter.errors, status: :unprocessable_entity }
+        format.js {'fail.js.erb'}
       end
     end
   end

@@ -35,3 +35,11 @@ $(function() {
     });
 
 });
+
+$(document).ajaxStart(function() {
+    $( ".ajax-spiners" ).show();
+});
+
+$(document).ajaxStop(function() {
+    $( ".ajax-spiners" ).hide();
+});

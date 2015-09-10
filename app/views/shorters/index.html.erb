@@ -1,33 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Shorters</h1>
+<div class="row">
+  <div class="col-md-7">
+    <div class="form-set">
+      <%= render 'form' %>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Long url</th>
-      <th>Short url</th>
-      <th>Click</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @shorters.each do |shorter| %>
-      <tr>
-        <td><%= shorter.long_url %></td>
-        <td><%= shorter.short_url %></td>
-        <td><%= shorter.click %></td>
-        <td><%= shorter.user_id %></td>
-        <td><%= link_to 'Show', shorter %></td>
-        <td><%= link_to 'Edit', edit_shorter_path(shorter) %></td>
-        <td><%= link_to 'Destroy', shorter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="clearfix"></div>
+    <% if current_user %>
+        <table class="table">
+          <thead>
+          <tr>
+            <td>Long url</td>
+            <td>Short url</td>
+            <td>Clicks</td>
+            <td>created at</td>
+            <td>Action</td>
+          </tr>
+          </thead>
+          <tbody id="url-append">
+            <%= render @shorter %>
+          </tbody>
+        </table>
+    <% else %>
+        <div class="alert alert-info" role="alert">Sign up or Sign in to keep your history and statistic of your URL</div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <div class="col-md-5" id="details">
 
-<br>
+    <i class="fa fa-cog fa-spin ajax-spiners"></i>
+  </div>
+</div>
 
-<%= link_to 'New Shorter', new_shorter_path %>
+
+
+
+
+
