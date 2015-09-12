@@ -1,7 +1,7 @@
 class Detector
   def browser_detection(args)
     result = args
-    browser_compatible = ''
+    browser_compatible = 'unknown'
     if result =~ /Safari/
       unless result =~ /Chrome/
         return 'Safari'

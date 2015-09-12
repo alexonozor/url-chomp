@@ -39,6 +39,7 @@ class ShortersController < ApplicationController
     @shorter.user_id = current_user.id if current_user
     respond_to do |format|
       if @shorter.save
+        details
         format.html { redirect_to root_url, notice: request.domain + @shorter.short_url }
         format.json { render :show, status: :created, location: @shorter }
         format.js
@@ -76,6 +77,9 @@ class ShortersController < ApplicationController
   end
 
   def details
+    @countries = Analytic.top_countries(@shorter.id)
+    @devices = Analytic.top_device(@shorter.id)
+    @referrers = Analytic.top_referrers(@shorter.id)
   end
 
   def convert_to_device
@@ -94,10 +98,10 @@ class ShortersController < ApplicationController
     @shorter = Shorter.find(params[:id])
   end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def shorter_params
-      params.require(:shorter).permit(:long_url, :short_url, :clicks, :user_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def shorter_params
+    params.require(:shorter).permit(:long_url, :short_url, :clicks, :user_id)
+  end
 
 
 

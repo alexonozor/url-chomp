@@ -40,6 +40,7 @@ group :development, :test do
   gem 'byebug'
   gem 'sqlite3'
   gem 'pry'
+  gem 'rspec-rails'
 end
 
 group :development do

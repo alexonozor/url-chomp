@@ -19,32 +19,33 @@ $(function () {
 <%= link_to (truncate "#{@shorter.long_url}".html_safe, length: 30), @shorter.long_url %>
 <div id="orders_chart" style="height: 200px;"></div>
 
-<h3>Top Countries</h3>
-
+<h4><i class="fa fa-flag"></i> Top Countries</h4>
+<% @countries.each do |c| %>
 <div class="progress">
   <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-       aria-valuemin="0" aria-valuemax="100" style="width:40%">
-    Nigeria
+       aria-valuemin="0" aria-valuemax="100" style="width:<%= c.count*10 %>%">
+    <%= c.country %>  <span class="badge"><%= c.count %> </span>
   </div>
 </div>
+<% end %>
 
-<div class="progress">
-  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
-       aria-valuemin="0" aria-valuemax="100" style="width:50%">
-    Brazil
-  </div>
-</div>
+<h4><i class="fa fa-chrome"></i> Top Browser</h4>
+<% @devices.each do |d| %>
+    <div class="progress">
+      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40"
+           aria-valuemin="0" aria-valuemax="100" style="width:<%= d.count*10 %>%">
+        <%= d.device %> <span class="badge"><%= d .count %> </span>
+      </div>
+    </div>
+<% end %>
 
-<div class="progress">
-  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
-       aria-valuemin="0" aria-valuemax="100" style="width:60%">
-    Togo
-  </div>
-</div>
+<h4><i class="fa fa-link"></i> Top Referrers</h4>
+<% @referrers.each do |d| %>
+    <div class="progress">
+      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40"
+           aria-valuemin="0" aria-valuemax="100" style="width:<%= d.count*10 %>%">
+        <%=  %> <span class="badge"><%= d .count %> </span>
+      </div>
+    </div>
+<% end %>
 
-<div class="progress">
-  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
-       aria-valuemin="0" aria-valuemax="100" style="width:70%">
-    Kenya
-  </div>
-</div>
