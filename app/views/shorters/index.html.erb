@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <div class="row">
   <div class="col-md-7">
@@ -27,8 +27,23 @@
     <% end %>
   </div>
   <div class="col-md-5" id="details">
-
     <i class="fa fa-cog fa-spin ajax-spiners"></i>
+    <table class="table">
+      <h3 align="center">Recent Url</h3>
+      <thead>
+      <tr>
+        <td>Short url</td>
+        <td>Long url</td>
+      </tr>
+      </thead>
+        <% @public_url.each do |public| %>
+        <tr>
+          <td><%=link_to "#{domain_request+'/' + public[0]}",  domain_request+'/' + public[0]  %></td>
+          <td><%= link_to (truncate "#{public[1]}".html_safe, length: 20), public[1] %></td>
+        </tr>
+        <% end %>
+    </table>
+   <div align="center"> <%= will_paginate @public_url %> </div>
   </div>
 </div>
 

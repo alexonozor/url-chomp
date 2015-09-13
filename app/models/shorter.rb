@@ -1,4 +1,5 @@
 class Shorter < ActiveRecord::Base
+
   geocoded_by :ip_address
   before_validation :generate_short_url
   validates :long_url, presence: :true
@@ -6,7 +7,9 @@ class Shorter < ActiveRecord::Base
   validates :short_url, uniqueness: { case_sensitive: false }
   belongs_to :user
   has_many :analytics, dependent: :destroy
+
   default_scope {order('created_at desc')}
+  scope :public_url, -> { where(:user_id => nil).pluck(:short_url, :long_url)}
 
   def click_counter
     self.increment!(:clicks)

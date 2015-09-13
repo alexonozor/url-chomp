@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-  get '/:short_url' => "shorters#show"
   # delete '/:short_url' => "shorters#delete", as: :destroy_url
   resources :shorters do
     member do
       get 'details'
     end
   end
+  get '/:short_url' => "shorters#show"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

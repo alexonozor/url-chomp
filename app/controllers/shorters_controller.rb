@@ -2,12 +2,13 @@ class ShortersController < ApplicationController
   before_action :set_shorter, only: [:show, :edit, :update]
   before_action :find_by_id, only: [:details, :destroy, :edit]
   require 'browser'
+  require 'will_paginate/array'
 
   # GET /shorters
   # GET /shorters.json
   def index
+    @public_url = Shorter.public_url.paginate(:page => params[:page], :per_page => 10)
     @shorter = Shorter.new
-    @shorters = Shorter.all
   end
 
   # GET /shorters/1
@@ -18,7 +19,7 @@ class ShortersController < ApplicationController
       @shorter.analytics.create(country: request.location.data['country_name'], refferer: request.referrer, device: convert_to_device)
       redirect_to @shorter.long_url
     else
-      flash[:errors] = "Cound not connect with any site please chech the url you are try to shorten"
+      flash[:errors] = "Short Url not found!"
       redirect_to root_path
     end
   end
@@ -84,8 +85,8 @@ class ShortersController < ApplicationController
 
   def convert_to_device
     browser = ::Detector.new
-    alex = browser.browser_detection(request.env['HTTP_USER_AGENT'])
-    return alex
+    browser_agent = browser.browser_detection(request.env['HTTP_USER_AGENT'])
+    return browser_agent
   end
 
   private

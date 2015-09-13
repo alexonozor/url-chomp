@@ -1,0 +1,29 @@
+<h4><i class="fa fa-flag"></i> Top Countries</h4>
+<% @countries.each do |c| %>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+           aria-valuemin="0" aria-valuemax="100" style="width:<%= c.count*10 %>%">
+        <%= c.country %>  <span class="badge"><%= c.count %> </span>
+      </div>
+    </div>
+<% end %>
+
+<h4><i class="fa fa-chrome"></i> Top Browser</h4>
+<% @devices.each do |d| %>
+    <div class="progress">
+      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40"
+           aria-valuemin="0" aria-valuemax="100" style="width:<%= d.count*10 %>%">
+        <%= d.device %> <span class="badge"><%= d .count %> </span>
+      </div>
+    </div>
+<% end %>
+
+<h4><i class="fa fa-link"></i> Top Referrers</h4>
+<% @referrers.each do |d| %>
+    <div class="progress">
+      <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40"
+           aria-valuemin="0" aria-valuemax="100" style="width:<%= d.count*10 %>%">
+        <%= d.refferer %> <span class="badge"><%= d.count %> </span>
+      </div>
+    </div>
+<% end %>
