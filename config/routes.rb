@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  # delete '/:short_url' => "shorters#delete", as: :destroy_url
   resources :shorters do
     member do
       get 'details'
