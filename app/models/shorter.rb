@@ -9,7 +9,7 @@ class Shorter < ActiveRecord::Base
   has_many :analytics, dependent: :destroy
 
   default_scope {order('created_at desc')}
-  scope :public_url, -> { where(:user_id => nil).pluck(:short_url, :long_url)}
+  scope :public_url, -> { where(:user_id => nil).pluck(:short_url, :long_url, :created_at)}
 
   def click_counter
     self.increment!(:clicks)

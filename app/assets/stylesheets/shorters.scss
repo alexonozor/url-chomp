@@ -135,4 +135,13 @@
 #details{
   background-color: #FAFAFA;
   padding: 10px;
+  min-height: 630px;
+  overflow: scroll;
+}
+
+#Url-flash{
+  margin-top: 20px;
+  display: none;
+  text-align: center;
+  font-size: 15px;
 }

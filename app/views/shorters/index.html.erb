@@ -6,6 +6,11 @@
       <%= render 'form' %>
     </div>
 
+
+    <div class="well" id="Url-flash">
+
+    </div>
+
     <div class="clearfix"></div>
     <% if current_user %>
         <table class="table">
@@ -34,12 +39,14 @@
       <tr>
         <td>Short url</td>
         <td>Long url</td>
+        <td>Created at</td>
       </tr>
       </thead>
         <% @public_url.each do |public| %>
         <tr>
           <td><%=link_to "#{domain_request+'/' + public[0]}",  domain_request+'/' + public[0]  %></td>
           <td><%= link_to (truncate "#{public[1]}".html_safe, length: 20), public[1] %></td>
+          <td><%= time_ago_in_words  public[2]  %> ago</td>
         </tr>
         <% end %>
     </table>

@@ -1,2 +1,8 @@
-$('#details').html('<%= j render template: 'shorters/details.html.erb' %>');
-$("#url-append").html("<%= j (render @shorter) %>");
+<% if current_user %>
+    alert('<%= escape_javascript(flash.now[:short_url]) %>');
+    $('#details').html('<%= j render template: 'shorters/details.html.erb' %>');
+    $("#url-append").html("<%= j (render @shorter) %>");
+<% else %>
+    $('#Url-flash').css('display', 'block');
+    $('#Url-flash').html('<%= escape_javascript(flash.now[:short_url]) %>');
+<% end %>

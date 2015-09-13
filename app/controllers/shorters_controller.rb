@@ -43,6 +43,7 @@ class ShortersController < ApplicationController
         details
         format.html { redirect_to root_url, notice: request.domain + @shorter.short_url }
         format.json { render :show, status: :created, location: @shorter }
+        flash[:short_url] = request.domain + '://' + @shorter.short_url
         format.js
       else
         format.html { render :new }
