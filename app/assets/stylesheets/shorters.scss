@@ -135,8 +135,9 @@
 #details{
   background-color: #FAFAFA;
   padding: 10px;
-  min-height: 630px;
+  min-height: 500px;
   overflow: scroll;
+  border: 1px solid #ccc;
 }
 
 #Url-flash{
@@ -144,4 +145,67 @@
   display: none;
   text-align: center;
   font-size: 15px;
+}
+
+.active-ion i{
+  font-size: 28px;
+  position: absolute;
+  right: -3px;
+  z-index: 40;
+  float: left;
+}
+
+.navbar-default {
+  background-color: rgba(60, 209, 243, 0.58);
+  border-color: #e7e7e7;
+}
+
+.navbar-default a:active {
+  color: #F7F7F7;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.container .text-muted {
+  margin: 20px 0;
+}
+
+
+.turn{
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: bolder;
+  -webkit-transform:rotate(30deg);
+  -moz-transform:rotate(30deg);
+  -o-transform:rotate(30deg);
+}
+
+a {
+  color: #337ab7;
+  text-decoration: none;
+  font-size: smaller;
+}
+
+
+
+.navbar-brand{
+  font-size: 25px;
+  color: black;
+  font-weight: bolder;
+}
+
+
+.well {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 0px;
 }

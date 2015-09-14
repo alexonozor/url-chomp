@@ -1,6 +1,6 @@
 class Shorter < ActiveRecord::Base
 
-  geocoded_by :ip_address
+
   before_validation :generate_short_url
   validates :long_url, presence: :true
   validates :short_url, presence: :true

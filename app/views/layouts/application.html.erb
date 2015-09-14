@@ -4,10 +4,9 @@
   <title>UrlChomp</title>
   <%= stylesheet_link_tag   'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css',
                             'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',
-                            'application', media: 'all', 'data-turbolinks-track' => true %>
+                            'application', media: 'all' %>
   <%= javascript_include_tag 'application', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js',
-                               'http://code.highcharts.com/highcharts.js',
-                              'data-turbolinks-track' => true %>
+                               'http://code.highcharts.com/highcharts.js' %>
   <script src="http://code.highcharts.com/highcharts.js"></script>
   <%= csrf_meta_tags %>
 </head>
@@ -17,5 +16,6 @@
     <%= flash_messages %>
     <%= yield %>
   </div>
+  <%= render partial: 'layouts/footer' %>
 </body>
 </html>

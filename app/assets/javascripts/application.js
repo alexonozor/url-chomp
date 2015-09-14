@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 
 
@@ -42,4 +41,12 @@ $(document).ajaxStart(function() {
 
 $(document).ajaxStop(function() {
     $( ".ajax-spiners" ).hide();
+});
+
+$(function() {
+    $(".pagination a").click(function() {
+        $(".pagination").html("Page is loading...");
+        $.getScript(this.href);
+        return false;
+    });
 });

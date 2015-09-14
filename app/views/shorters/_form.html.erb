@@ -1,3 +1,4 @@
+<b>Paste your long URL here:</b>
 <%= form_for(@shorter, remote: true) do |f| %>
     <% if @shorter.errors.any? %>
         <% @shorter.errors.full_messages.each do |message| %>
@@ -6,11 +7,12 @@
     <% end %>
 
     <div class="input-group">
-      <%= f.text_field :long_url, class:'form-control', placeholder: 'http://long_url.com' %>
+      <%= f.url_field :long_url, class:'form-control', placeholder: 'http://long url.com', required: true  %>
       <div class="input-group-btn">
-        <%= f.submit "Chomp URL", class: 'btn btn-primary' %>
+        <%= f.submit "Chomp URL", class: 'btn btn-info' %>
       </div>
     </div>
+    <span>All cut.ng URLs and click analytics are public and can be accessed by anyone.</span>
 <% end %>
 
 

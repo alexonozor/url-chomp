@@ -8,8 +8,9 @@ class ShortersController < ApplicationController
   # GET /shorters
   # GET /shorters.json
   def index
-    @public_url = Shorter.public_url.paginate(:page => params[:page], :per_page => 10)
     @shorter = Shorter.new
+    @current_user_shorter = current_user.shorters.paginate(:page => params[:page], :per_page =>5)
+    @public_url = Shorter.public_url.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /shorters/1
@@ -42,7 +43,7 @@ class ShortersController < ApplicationController
     respond_to do |format|
       if @shorter.save
         details
-        format.html { redirect_to root_url, notice: request.domain + @shorter.short_url }
+        format.html
         format.json { render :show, status: :created, location: @shorter }
         flash[:short_url] = domain_request+'/' + @shorter.short_url
         format.js
@@ -81,7 +82,7 @@ class ShortersController < ApplicationController
 
   def details
     @countries = Analytic.top_countries(@shorter.id)
-    @devices = Analytic.top_device(@shorter.id)
+    @devices   = Analytic.top_device(@shorter.id)
     @referrers = Analytic.top_referrers(@shorter.id)
   end
 

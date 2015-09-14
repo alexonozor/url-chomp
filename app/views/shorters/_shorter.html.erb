@@ -5,7 +5,18 @@
       <td><%=link_to "#{domain_request+'/' + shorter.short_url}", domain_request+'/' + shorter.short_url  %></td>
       <td><%= shorter.clicks %></td>
       <td><%=time_ago_in_words shorter.created_at %></td>
-      <td><%=link_to '<i class="fa fa-signal"></i> Details'.html_safe, details_shorter_path(shorter), class:'btn btn-info btn-sm', remote: true %></td>
-      <td><%= link_to '<i class="fa fa-trash"></i> Delete'.html_safe, shorter_path(shorter), method: :delete, class:'btn btn-danger btn-sm' %></td>
+      <td><%=link_to '<i class="fa fa-signal"></i> Details'.html_safe, details_shorter_path(shorter), class:'btn btn-info details btn-sm', remote: true %></td>
+      <td><%= link_to '<i class="fa fa-trash"></i> Delete'.html_safe, shorter_path(shorter), method: :delete, :data => {:confirm => 'Are you sure?'}, class:'btn btn-danger btn-sm' %></td>
     </tr>
 <% end %>
+
+
+
+<script>
+    $('.details').click(function(e){
+        $('tr').removeClass('active');
+        $('.active-ion').remove();
+        var parents =  $(this).parentsUntil('tbody');
+        $(parents[1]).addClass('active').append('<td class="active-ion"><i class="fa fa-chevron-right"></i></td>');
+    });
+</script>
