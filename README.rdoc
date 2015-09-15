@@ -5,8 +5,8 @@ CUT.NG is a url shortner app written by ALEX OBOGBARE with the love for http://w
 http://urlchomp.herokuapp.com
 
 === Easy to use
-Simply visit the above url, you will see a form on the welcome page that look like a dashboard,
-paste in your long url and click on the cut button. This will generate a short url for you in a seconds.
+Simply visit the above url, you will see a form on the welcome page that looks like a dashboard,
+paste in your long url and click on the cut button. This will generate a short url for you in a second.
  If you want to get statistics for you url's you will need to sign up or sign in.
 
 === STATISTICS
