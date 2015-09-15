@@ -11,6 +11,7 @@ class Shorter < ActiveRecord::Base
   default_scope {order('created_at desc')}
   scope :public_url, -> { where(:user_id => nil).pluck(:short_url, :long_url, :created_at)}
 
+
   def click_counter
     self.increment!(:clicks)
   end
