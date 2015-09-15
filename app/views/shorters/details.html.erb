@@ -15,12 +15,12 @@ $(function () {
 });
 </script>
 
-<div class="well text-center"><b><%=link_to "#{domain_request+'/' + @shorter.short_url}", domain_request+'/' + @shorter.short_url  %></b></div>
+<div class="well text-center" id="flash" data-toggle="tooltip" data-placement="bottom" title="Copy your URL"><b><%=link_to "#{domain_request+'/' + @shorter.short_url}", 'http://' + domain_request+'/' + @shorter.short_url, :target => "_blank"  %></b></div>
 <%= link_to (truncate "#{@shorter.long_url}".html_safe, length: 30), @shorter.long_url %>
 <div id="orders_chart" style="height: 200px;"></div>
 
 <% unless @shorter.clicks == 0 %>
    <%= render partial: "statistic" %>
 <% else %>
-  <h2 class="well" align="center">No click Recoded yet</h2>
+  <h3 class="well" align="center">No click Recoded yet</h3>
 <% end %>

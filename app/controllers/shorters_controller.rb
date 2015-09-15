@@ -10,7 +10,7 @@ class ShortersController < ApplicationController
   def index
     @shorter = Shorter.new
     @current_user_shorter = current_user.shorters.paginate(:page => params[:page], :per_page =>5) if current_user
-    @public_url = Shorter.public_url.paginate(:page => params[:page], :per_page => 6)
+    @public_url = Shorter.public_url.paginate(:page => params[:page])
   end
 
   # GET /shorters/1

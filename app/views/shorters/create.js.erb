@@ -2,7 +2,11 @@
     $('#Url-flash').html('<%= escape_javascript(flash.now[:short_url]) %>');
     $('#details').html('<%= j render template: 'shorters/details.html.erb' %>');
     $("#url-append").html("<%= j (render @shorter) %>");
+    $('#shorter_long_url').val('');
+    $('#flash').tooltip('show')
 <% else %>
+    $('#shorter_long_url').val('');
     $('#Url-flash').css('display', 'block');
     $('#Url-flash').html('<%= escape_javascript(flash.now[:short_url]) %>');
+    $('#Url-flash').tooltip('show')
 <% end %>

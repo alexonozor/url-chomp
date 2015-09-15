@@ -1,6 +1,6 @@
 class Shorter < ActiveRecord::Base
 
-
+  WillPaginate.per_page = 5
   before_validation :generate_short_url
   validates :long_url, presence: :true
   validates :short_url, presence: :true

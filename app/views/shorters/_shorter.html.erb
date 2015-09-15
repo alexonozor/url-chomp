@@ -1,8 +1,8 @@
 
 <% current_user.shorters.each do |shorter| %>
     <tr>
-      <td><%= link_to (truncate "#{shorter.long_url}".html_safe, length: 19), shorter.long_url %></td>
-      <td><%=link_to "#{domain_request+'/' + shorter.short_url}", domain_request+'/' + shorter.short_url  %></td>
+      <td><%= link_to (truncate "#{shorter.long_url}".html_safe, length: 19), shorter.long_url, :target => "_blank" %></td>
+      <td><%=link_to "#{domain_request+'/' + shorter.short_url}", 'http://' + domain_request+'/' + shorter.short_url, :target => "_blank"  %></td>
       <td><%= shorter.clicks %></td>
       <td><%=time_ago_in_words shorter.created_at %></td>
       <td><%=link_to '<i class="fa fa-signal"></i> Details'.html_safe, details_shorter_path(shorter), class:'btn btn-info details btn-sm', remote: true %></td>

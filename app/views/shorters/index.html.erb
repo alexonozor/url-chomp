@@ -7,7 +7,7 @@
     </div>
 
 
-    <div class="well" id="Url-flash">
+    <div class="well" id="Url-flash" data-toggle="tooltip" data-placement="top" title="Copy your URL">
 
     </div>
 
@@ -28,13 +28,13 @@
           </tbody>
         </table>
     <% else %>
-        <div class="alert alert-info" role="alert">Sign up or Sign in to keep your history and statistic of your URL</div>
+        <div class="alert alert-warning" role="alert">Sign up or Sign in to keep your history and statistic of your URL</div>
     <% end %>
   </div>
   <div class="col-md-5" id="details">
     <i class="fa fa-cog fa-spin ajax-spiners"></i>
     <table class="table">
-      <h3 align="center">Recent Url</h3>
+      <h4 align="center">Public url's<sup class="info text-info" data-container="body" data-toggle="popover" data-placement="right" data-content="Warning: All URL's without user account will be public and have no statictics.">?</sup></h4>
       <thead>
       <tr>
         <td>Short url</td>
@@ -54,6 +54,11 @@
   </div>
 </div>
 
+<script>
+   $('sup').hover(function(){
+    $(this).popover('toggle')
+   });
+</script>
 
 
 

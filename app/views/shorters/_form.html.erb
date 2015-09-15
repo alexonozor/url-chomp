@@ -9,10 +9,10 @@
     <div class="input-group">
       <%= f.url_field :long_url, class:'form-control', placeholder: 'http://long url.com', required: true  %>
       <div class="input-group-btn">
-        <%= f.submit "Chomp URL", class: 'btn btn-info' %>
+        <button class='btn btn-info'>Cut <i class='fa fa-scissors'></i></button>
       </div>
     </div>
-    <span>All cut.ng URLs and click analytics are public and can be accessed by anyone.</span>
+    <small>All cut.ng URLs and click analytics are public and can be accessed by anyone.</small>
 <% end %>
 
 

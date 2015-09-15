@@ -42,3 +42,5 @@ $(document).ajaxStart(function() {
 $(document).ajaxStop(function() {
     $( ".ajax-spiners" ).hide();
 });
+
+

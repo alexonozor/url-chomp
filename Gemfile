@@ -41,6 +41,10 @@ group :development, :test do
   gem 'sqlite3'
   gem 'pry'
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver'
 end
 
 group :development do
