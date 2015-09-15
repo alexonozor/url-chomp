@@ -44,7 +44,6 @@ class ShortersController < ApplicationController
       if @shorter.save
         details
         format.html
-        format.json { render :show, status: :created, location: @shorter }
         flash[:short_url] = domain_request+'/' + @shorter.short_url
         format.js
       else

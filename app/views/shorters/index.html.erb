@@ -44,7 +44,7 @@
       </thead>
         <% @public_url.each do |public| %>
         <tr>
-          <td><%=link_to "#{domain_request+'/' + public[0]}",  domain_request+'/' + public[0]  %></td>
+          <td><%=link_to "#{domain_request+'/' + public[0]}",  'http://'+ domain_request+'/' + public[0], target: '_blank'  %></td>
           <td><%= link_to (truncate "#{public[1]}".html_safe, length: 20), public[1] %></td>
           <td><%= time_ago_in_words  public[2]  %> ago</td>
         </tr>
