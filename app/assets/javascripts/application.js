@@ -44,3 +44,6 @@ $(document).ajaxStop(function() {
 });
 
 
+$('.set-display').click(function(){
+    alert('h');
+})

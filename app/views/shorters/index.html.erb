@@ -32,32 +32,22 @@
     <% end %>
   </div>
   <div class="col-md-5" id="details">
-    <i class="fa fa-cog fa-spin ajax-spiners"></i>
-    <table class="table">
-      <h4 align="center">Public url's<sup class="info text-info" data-container="body" data-toggle="popover" data-placement="right" data-content="Warning: All URL's without user account will be public and have no statictics.">?</sup></h4>
-      <thead>
-      <tr>
-        <td>Short url</td>
-        <td>Long url</td>
-        <td>Created at</td>
-      </tr>
-      </thead>
-        <% @public_url.each do |public| %>
-        <tr>
-          <td><%=link_to "#{domain_request+'/' + public[0]}",  'http://'+ domain_request+'/' + public[0], target: '_blank'  %></td>
-          <td><%= link_to (truncate "#{public[1]}".html_safe, length: 20), public[1] %></td>
-          <td><%= time_ago_in_words  public[2]  %> ago</td>
-        </tr>
-        <% end %>
-    </table>
-   <div align="center"> <%= will_paginate @public_url %> </div>
+    <%= render template: 'shorters/public' %>
   </div>
+  <p class="text-center set-display"><a href="#">View Public url</a></p>
 </div>
 
 <script>
    $('sup').hover(function(){
     $(this).popover('toggle')
    });
+
+   $('.set-display').click(function(){
+       $(this).hide();
+       $('tr').removeClass('active');
+       $('.active-ion').remove();
+       $('#details').html('<%=j render template: 'shorters/public' %>');
+   })
 </script>
 
 

@@ -9,6 +9,6 @@ RSpec.feature "ShortenLinks", type: :feature do
     expect(page).to have_content('Paste your long URL here:')
     expect(page).to have_selector('form')
     fill_in('shorter_long_url', :with => 'https://facebook.com')
-    click_on('Chomp URL')
+    click_button('cut')
   end
 end
