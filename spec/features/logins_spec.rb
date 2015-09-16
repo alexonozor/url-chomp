@@ -13,7 +13,7 @@ RSpec.feature "Logins", type: :feature do
       fill_in 'user[email]', :with => "alexonozor@gmail.com"
       fill_in 'user[password]', :with => "onozorgheneho"
       click_on 'login-submit'
-      binding.pry
+      
       expect(page).to have_content('Signed in successfully.')
       DatabaseCleaner.strategy = :truncation
       DatabaseCleaner.clean
